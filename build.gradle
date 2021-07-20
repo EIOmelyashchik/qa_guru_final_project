@@ -1,0 +1,86 @@
+plugins {
+    id 'java-library'
+    id 'io.qameta.allure' version '2.8.1'
+    id "io.freefair.lombok" version "6.0.0-m2"
+}
+
+repositories {
+    mavenCentral()
+}
+
+def selenideVersion = "5.20.1",
+    junitVersion = "5.7.1",
+    javaFakerVersion = "1.0.2",
+    assertjCoreVersion = "3.19.0",
+    allureVersion = "2.13.8",
+    ownerVersion = "1.0.12"
+
+allure {
+    version = allureVersion
+    autoconfigure = true
+    aspectjweaver = true
+    configuration = "testImplementation"
+    useJUnit5 {
+        version = allureVersion
+    }
+}
+
+dependencies {
+    testImplementation(
+            //client
+            "io.rest-assured:rest-assured:4.4.0",
+            //json
+            "com.fasterxml.jackson.core:jackson-databind:2.11.2",
+            //config
+            "org.aeonbits.owner:owner:$ownerVersion",
+            //JUnit
+            "org.junit.jupiter:junit-jupiter-api:$junitVersion",
+            "org.junit.jupiter:junit-jupiter-params:$junitVersion",
+            //allure
+            "io.qameta.allure:allure-selenide:$allureVersion",
+            "io.qameta.allure:allure-rest-assured:$allureVersion",
+            //selenide
+            "com.codeborne:selenide:$selenideVersion",
+            "com.github.javafaker:javafaker:$javaFakerVersion",
+            //assert
+            "org.assertj:assertj-core:$assertjCoreVersion")
+    testRuntimeOnly "org.junit.jupiter:junit-jupiter-engine:$junitVersion"
+}
+
+tasks.withType(JavaCompile) {
+    options.encoding = 'UTF-8'
+    sourceCompatibility = JavaVersion.VERSION_1_8
+    targetCompatibility = JavaVersion.VERSION_1_8
+}
+
+tasks.withType(Test) {
+    systemProperties(System.getProperties())
+    systemProperty "chromeoptions.prefs", "intl.accept_languages=en"
+
+    if (System.getProperty("threads") != null) {
+        systemProperties += [
+                'junit.jupiter.execution.parallel.enabled'                 : true,
+                'junit.jupiter.execution.parallel.mode.default'            : 'concurrent',
+                'junit.jupiter.execution.parallel.mode.classes.default'    : 'concurrent',
+                'junit.jupiter.execution.parallel.config.strategy'         : 'fixed',
+                'junit.jupiter.execution.parallel.config.fixed.parallelism': System.getProperty("threads").toInteger()
+        ]
+    }
+
+    testLogging {
+        // set options for log level LIFECYCLE
+        events "failed",
+                "passed",
+                "skipped",
+                "standard_out",
+                "standard_error"
+        exceptionFormat "full"
+        showExceptions true
+        showCauses true
+        showStackTraces true
+    }
+}
+
+test {
+    useJUnitPlatform() {}
+}
