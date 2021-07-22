@@ -20,6 +20,7 @@ import org.junit.jupiter.params.provider.MethodSource;
 
 import java.util.stream.Stream;
 
+import static io.qameta.allure.Allure.parameter;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
 @Owner("omelyashchik")
@@ -62,6 +63,8 @@ public class AccountTests extends BaseTest {
     @ParameterizedTest(name = "Verify unsuccessful creation account with incorrect password: {0}")
     @MethodSource("incorrectPasswords")
     public void createAccountIncorrectPassword(NewUser newUser) {
+        parameter("Password", newUser.getPassword());
+
         String actualErrorMessage = steps.createUserWithIncorrectPassword(newUser);
         String expectedErrorMessage = "Passwords must have at least one non alphanumeric character, one digit ('0'-'9'), " +
                 "one uppercase ('A'-'Z'), one lowercase ('a'-'z'), one special character and Password must be eight " +

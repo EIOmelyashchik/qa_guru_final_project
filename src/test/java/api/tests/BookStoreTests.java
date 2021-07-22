@@ -19,7 +19,7 @@ import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
 @Owner("omelyashchik")
 @Layer("web")
-@Microservice("Registration")
+@Microservice("BookStore")
 @DisplayName("Verify Book Store")
 public class BookStoreTests extends BaseTest {
     private final ApiSteps steps = new ApiSteps();
