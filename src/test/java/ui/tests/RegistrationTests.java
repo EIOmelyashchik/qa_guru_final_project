@@ -16,7 +16,7 @@ import ui.testData.GenerateData;
 import ui.testData.User;
 import ui.endpoints.UiEndpoint;
 import ui.enums.RegistrationField;
-import ui.extensions.ScreenshotOnFailure;
+import extensions.ActionOnFailure;
 import ui.pages.MyAccountPage;
 import ui.pages.RegistrationPage;
 
@@ -26,7 +26,7 @@ import static io.qameta.allure.Allure.parameter;
 @Layer("web")
 @Microservice("Registration")
 @DisplayName("Verify registration")
-@ExtendWith({ScreenshotOnFailure.class})
+@ExtendWith({ActionOnFailure.class})
 public class RegistrationTests extends BaseTest {
     private RegistrationPage registrationPage;
     private Faker faker;

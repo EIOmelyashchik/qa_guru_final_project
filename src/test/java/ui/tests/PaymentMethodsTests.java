@@ -18,7 +18,7 @@ import ui.endpoints.UiEndpoint;
 import ui.enums.CheckoutTab;
 import ui.enums.CreditCard;
 import ui.enums.PaymentMethod;
-import ui.extensions.ScreenshotOnFailure;
+import extensions.ActionOnFailure;
 import ui.pages.CheckoutPage;
 import ui.pages.OrderInformationPage;
 import ui.restassured.AuthApi;
@@ -32,7 +32,7 @@ import static io.qameta.allure.Allure.parameter;
 @Layer("web")
 @Microservice("Payment")
 @DisplayName("Verify payment methods")
-@ExtendWith({ScreenshotOnFailure.class})
+@ExtendWith({ActionOnFailure.class})
 public class PaymentMethodsTests extends BaseTest {
     private CookiesManger cookiesManger;
     private Customer customer;

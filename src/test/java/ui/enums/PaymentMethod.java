@@ -2,7 +2,7 @@ package ui.enums;
 
 public enum PaymentMethod {
     CASH_ON_DELIVERY("Cash On Delivery", "paymentmethod_0"),
-    CHECK_MONEY_ORDER("Check / Money Order", "paymentmethod_1"),
+    CHECK_MONEY_ORDER("Check /Money Order", "paymentmethod_1"),
     CREDIT_CARD("Credit Card", "paymentmethod_2"),
     PURCHASE_ORDER("Purchase Order", "paymentmethod_3"),
     ;

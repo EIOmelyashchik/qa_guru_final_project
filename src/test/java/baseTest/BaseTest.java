@@ -22,8 +22,6 @@ public class BaseTest {
         attachPageSource();
         if (Configuration.browser.equals(Browsers.CHROME))
             attachAsText("Browser console logs", DriverHelper.getConsoleLogs());
-        if (driverConfig.videoEnabled() && !driverConfig.videoStorage().equals(""))
-            attachVideo(DriverHelper.getSessionId());
         }
     }
 }
