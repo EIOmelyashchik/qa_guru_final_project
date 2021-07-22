@@ -60,3 +60,36 @@ gradle clean test
     * -Dthreads={THREADS_AMOUNT}
 ```
 *optional
+## Allure reports
+### Overview
+![Allure reports overview](readme_files/AllureReportOverview.png)
+### Test with steps, attached image, console logs and video 
+*only failed tests have attached image and video
+
+![Allure reports test](readme_files/AllureReportTest.png)
+### Video
+![Video](./readme_files/Video.gif)
+
+## Allure TestOps
+### Launches
+![TestOps launches](./readme_files/TestOpsLaunches.png)
+- **id #5303** - Manual launch from TestOps
+- **id #5310** - Automated launch from Jenkins
+
+### Test Cases
+![TestOps cases](./readme_files/TestOpsSuites.png)
+
+### Dashboard
+![TestOps Dashboard](./readme_files/TestOpsDashboard.png)
+
+## Jira integration
+![Jira integration](./readme_files/Jira.png)
+
+## Notification in Telegram
+![telegram](./readme_files/TelegramBot.png)
+
+## Links
+### Jenkins
+https://jenkins.autotests.cloud/job/c05-kateAlmazova-final/
+### Allure reports
+https://jenkins.autotests.cloud/job/c05-kateAlmazova-final/allure/
