@@ -47,15 +47,15 @@ public class AccountTests extends BaseTest {
     }
 
     static Stream<Arguments> incorrectPasswords() {
-        return Stream.of(Arguments.of(
+        return Stream.of(
                 //short password
-                GenerateData.getUser(1, 7, true, true, true),
+                Arguments.of(GenerateData.getUser(1, 7, true, true, true)),
                 //without uppercase
-                GenerateData.getUser(8, 16, false, true, true),
+                Arguments.of(GenerateData.getUser(8, 16, false, true, true)),
                 //without spec symbols
-                GenerateData.getUser(8, 16, true, false, true),
+                Arguments.of(GenerateData.getUser(8, 16, true, false, true)),
                 //without digits
-                GenerateData.getUser(8, 16, true, true, false)));
+                Arguments.of(GenerateData.getUser(8, 16, true, true, false)));
     }
 
     @JiraIssues({@JiraIssue("QC5-10")})
