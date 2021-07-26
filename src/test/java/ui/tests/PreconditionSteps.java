@@ -12,6 +12,7 @@ public class PreconditionSteps {
         Selenide.open(product);
         $(".add-to-cart-button").click();
         $("#topcartlink").click();
+        $("#termsofservice").click();
         $("#checkout").click();
         $(".checkout-as-guest-button").click();
     }
