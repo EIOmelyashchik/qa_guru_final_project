@@ -4,10 +4,7 @@ public enum ApiEndpoint {
     BOOKS("/Books"),
     BOOK("/Book"),
 
-    USER("/User"),
-    GENERATE_TOKEN("/GenerateToken"),
-    USER_BY_ID("/User/{user}")
-    ;
+    USER("/User");
 
     private final String path;
 

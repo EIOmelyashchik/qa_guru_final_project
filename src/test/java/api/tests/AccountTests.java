@@ -7,7 +7,6 @@ import allure.Microservice;
 import api.models.NewUser;
 import api.models.User;
 import api.testData.GenerateData;
-import baseTest.BaseTest;
 import io.qameta.allure.Allure;
 import io.qameta.allure.Owner;
 import org.junit.jupiter.api.DisplayName;
@@ -27,7 +26,7 @@ import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 @Layer("api")
 @Microservice("Registration")
 @DisplayName("Verify Account")
-public class AccountTests extends BaseTest {
+public class AccountTests {
     private final ApiSteps steps = new ApiSteps();
 
     @Test
@@ -39,11 +38,20 @@ public class AccountTests extends BaseTest {
         User user = steps.createUser(newUser);
 
         Allure.step(String.format("Check that userID '%s' has a correct format", user.getUserID()), () ->
-                assertThat(user.getUserID()).as("userID").asString().matches("^\\w{8}-\\w{4}-\\w{4}-\\w{4}-\\w{12}$"));
+                assertThat(user.getUserID())
+                        .as("userID")
+                        .asString()
+                        .matches("^\\w{8}-\\w{4}-\\w{4}-\\w{4}-\\w{12}$"));
+
         Allure.step(String.format("Check that response contains correct username: '%s'", user.getUsername()), () ->
-                assertThat(user.getUsername()).as("Username").isEqualTo(newUser.getUserName()));
+                assertThat(user.getUsername())
+                        .as("Username")
+                        .isEqualTo(newUser.getUserName()));
+
         Allure.step("Check that response doesn't contain books", () ->
-                assertThat(user.getBooks().size()).as("Books amount").isEqualTo(0));
+                assertThat(user.getBooks().size())
+                        .as("Books amount")
+                        .isEqualTo(0));
     }
 
     static Stream<Arguments> incorrectPasswords() {
@@ -70,6 +78,8 @@ public class AccountTests extends BaseTest {
                 "one uppercase ('A'-'Z'), one lowercase ('a'-'z'), one special character and Password must be eight " +
                 "characters or longer.";
         Allure.step("Check that response contains error message", () ->
-                assertThat(actualErrorMessage).as("Error message").isEqualTo(expectedErrorMessage));
+                assertThat(actualErrorMessage)
+                        .as("Error message")
+                        .isEqualTo(expectedErrorMessage));
     }
 }

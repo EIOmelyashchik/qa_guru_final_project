@@ -4,7 +4,6 @@ import allure.JiraIssue;
 import allure.JiraIssues;
 import allure.Layer;
 import allure.Microservice;
-import baseTest.BaseTest;
 import com.codeborne.selenide.Selenide;
 import io.qameta.allure.Owner;
 import io.restassured.RestAssured;

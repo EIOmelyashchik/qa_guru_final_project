@@ -3,10 +3,8 @@ package ui.endpoints;
 public enum ApiEndpoint {
     MAIN("/"),
     LOGIN("/login"),
-    REGISTER("/register"),
     ADD_TO_CART("/addproducttocart"),
-    SAVE_BILLING("checkout/OpcSaveBilling")
-    ;
+    SAVE_BILLING("checkout/OpcSaveBilling");
 
     private final String path;
 

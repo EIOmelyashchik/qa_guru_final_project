@@ -1,4 +1,4 @@
-package baseTest;
+package ui.tests;
 
 import com.codeborne.selenide.Browsers;
 import com.codeborne.selenide.Configuration;
@@ -11,6 +11,7 @@ import static config.ProjectData.driverConfig;
 import static ui.helpers.AttachmentHelper.*;
 
 public class BaseTest {
+
     @BeforeAll
     static void setUp() {
         DriverHelper.configureDriver();
