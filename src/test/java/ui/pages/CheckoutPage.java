@@ -4,6 +4,7 @@ import io.qameta.allure.Step;
 import ui.enums.CheckoutTab;
 import ui.enums.CreditCard;
 import ui.enums.PaymentMethod;
+import ui.testData.Customer;
 
 import static com.codeborne.selenide.Selenide.$;
 
@@ -46,6 +47,19 @@ public class CheckoutPage {
     public OrderInformationPage openOrderDetails() {
         $("[href*='orderdetails']").click();
         return new OrderInformationPage();
+    }
+
+    @Step("Fill billing data: {customer}")
+    public CheckoutPage fillBillingData(Customer customer) {
+        $("#BillingNewAddress_FirstName").setValue(customer.getFirstName());
+        $("#BillingNewAddress_LastName").setValue(customer.getLastName());
+        $("#BillingNewAddress_Email").setValue(customer.getEmail());
+        $("#BillingNewAddress_CountryId").selectOption(customer.getCountry().getName());
+        $("#BillingNewAddress_City").setValue(customer.getCity());
+        $("#BillingNewAddress_Address1").setValue(customer.getAddress());
+        $("#BillingNewAddress_ZipPostalCode").setValue(customer.getZipCode());
+        $("#BillingNewAddress_PhoneNumber").setValue(customer.getPhoneNumber());
+        return this;
     }
 
     @Step("Fill card data: {creditCard}")

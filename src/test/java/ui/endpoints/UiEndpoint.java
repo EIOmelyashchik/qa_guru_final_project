@@ -2,8 +2,7 @@ package ui.endpoints;
 
 public enum UiEndpoint {
     REGISTER("/register"),
-    CHECKOUT("/onepagecheckout"),
-    FAVICON("/favicon.ico");
+    CHECKOUT("/onepagecheckout");
 
     private final String path;
 
